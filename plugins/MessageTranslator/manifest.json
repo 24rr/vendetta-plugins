@@ -1,0 +1,14 @@
+{
+    "name": "Message Translator",
+    "description": "Translate messages to your preferred language with a long-press.",
+    "authors": [
+        {
+            "name": "24rr",
+            "id": "795928925654089760"
+        }
+    ],
+    "main": "src/index.ts",
+    "vendetta": {
+        "icon": "ic_translate"
+    }
+}
