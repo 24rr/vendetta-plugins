@@ -5,3 +5,7 @@ This repo contains a template for creating [Vendetta](https://github.com/vendett
 Paste a plugin URL into the Plugins page of Vendetta, following a basic format of:
 
 https://24rr.github.io/vendetta-plugins/`PLUGIN_NAME`
+
+## Current Plugin
+
+- MessageTranslator
