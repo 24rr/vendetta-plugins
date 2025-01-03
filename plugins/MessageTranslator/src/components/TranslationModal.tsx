@@ -37,25 +37,32 @@ export default function TranslationModal({ message, channelId, close }: Translat
         close();
     };
 
-    return (
-        <View style={{ padding: 16 }}>
-            <Text style={{ color: semanticColors.HEADER_PRIMARY, fontSize: 16, marginBottom: 16 }}>
-                Original: {message.content}
-            </Text>
-            
-            {loading ? (
-                <Text style={{ color: semanticColors.HEADER_SECONDARY }}>Translating...</Text>
-            ) : (
-                <>
-                    <Text style={{ color: semanticColors.HEADER_PRIMARY, fontSize: 16, marginBottom: 16 }}>
-                        Translated: {translatedText}
-                    </Text>
-                    <FormRow
-                        label="Apply Translation"
-                        onPress={applyTranslation}
-                    />
-                </>
-            )}
-        </View>
+    return RN.createElement(
+        View,
+        { style: { padding: 16 } },
+        RN.createElement(
+            Text,
+            { style: { color: semanticColors.HEADER_PRIMARY, fontSize: 16, marginBottom: 16 } },
+            `Original: ${message.content}`
+        ),
+        loading
+            ? RN.createElement(
+                Text,
+                { style: { color: semanticColors.HEADER_SECONDARY } },
+                "Translating..."
+            )
+            : RN.createElement(
+                RN.Fragment,
+                null,
+                RN.createElement(
+                    Text,
+                    { style: { color: semanticColors.HEADER_PRIMARY, fontSize: 16, marginBottom: 16 } },
+                    `Translated: ${translatedText}`
+                ),
+                RN.createElement(FormRow, {
+                    label: "Apply Translation",
+                    onPress: applyTranslation
+                })
+            )
     );
 } 

@@ -24,13 +24,11 @@ export default {
                     showModal({
                         key: "translate-modal",
                         modal: {
-                            children: () => (
-                                <TranslationModal
-                                    message={message}
-                                    channelId={message.channel_id}
-                                    close={() => findByProps("popModal").popModal()}
-                                />
-                            ),
+                            children: () => RN.createElement(TranslationModal, {
+                                message: message,
+                                channelId: message.channel_id,
+                                close: () => findByProps("popModal").popModal()
+                            }),
                             closable: true,
                             title: "Translate Message"
                         }

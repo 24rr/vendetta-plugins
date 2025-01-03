@@ -1,3 +1,4 @@
+import { ReactNative as RN } from "@vendetta/metro/common";
 import { Forms } from "@vendetta/ui/components";
 import { useProxy } from "@vendetta/storage";
 import { storage } from "@vendetta/plugin";
@@ -23,15 +24,15 @@ const LANGUAGES = {
 export default () => {
     useProxy(storage);
 
-    return (
-        <>
-            <FormText>Configure your translation preferences</FormText>
-            <FormSelect
-                label="Target Language"
-                value={storage.targetLanguage}
-                options={Object.entries(LANGUAGES).map(([value, label]) => ({ label, value }))}
-                onChange={(value: string) => storage.targetLanguage = value}
-            />
-        </>
+    return RN.createElement(
+        RN.Fragment,
+        null,
+        RN.createElement(FormText, null, "Configure your translation preferences"),
+        RN.createElement(FormSelect, {
+            label: "Target Language",
+            value: storage.targetLanguage,
+            options: Object.entries(LANGUAGES).map(([value, label]) => ({ label, value })),
+            onChange: (value: string) => storage.targetLanguage = value
+        })
     );
 }
